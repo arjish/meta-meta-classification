@@ -4,8 +4,8 @@ import subprocess
 from imageio import imread, imwrite
 
 
-source_dir = './CUB_200_2011/images'
-target_dir = './data/bird'
+source_dir = 'CUB_200_2011/images'
+target_dir = 'data/CUB'
 
 percentage_train_class = 70
 percentage_val_class = 15
@@ -59,5 +59,5 @@ for path in _ids:
             imwrite(path, img)
 
 # resize images
-cmd = ['python', 'get_dataset_script/resize_dataset.py', './data/bird']
+cmd = ['python', 'get_dataset_script/resize_dataset.py', 'data/bird', 'CUB']
 subprocess.call(cmd)

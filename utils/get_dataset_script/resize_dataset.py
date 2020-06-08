@@ -3,8 +3,11 @@ import sys
 from imageio import imread, imwrite
 from skimage.transform import resize
 
-target_dir = './data/aircraft' if len(sys.argv) < 2 else sys.argv[1]
-img_size = [84, 84]
+target_dir = sys.argv[1]
+if sys.argv[2] == 'omniglot':
+    img_size = [28, 28]
+else:
+    img_size = [84, 84]
 
 _ids = []
 

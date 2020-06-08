@@ -3,8 +3,8 @@ import os
 import subprocess
 
 
-source_dir = './fgvc-aircraft-2013b/data'
-target_dir = './data/aircraft'
+source_dir = 'fgvc-aircraft-2013b/data'
+target_dir = 'data/aircraft'
 
 percentage_train_class = 70
 percentage_val_class = 15
@@ -58,5 +58,5 @@ for i, line in enumerate(lines):
     print('{}/{} {}'.format(i, len(lines), ' '.join(cmd)))
 
 # resize images
-cmd = ['python', 'get_dataset_script/resize_dataset.py', './data/aircraft']
+cmd = ['python', 'get_dataset_script/resize_dataset.py', 'data/aircraft', 'aircraft']
 subprocess.call(cmd)
