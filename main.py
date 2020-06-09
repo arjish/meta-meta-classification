@@ -18,8 +18,8 @@ parser.add_argument('-t', '--test', action='store_true', default=False,
     help='set for test, otherwise train')
 parser.add_argument('--multi', action='store_true', default=False,
     help='set for multi-class problems, otherwise binary classification')
-parser.add_argument('-l', '--train_lr', default=1e-3, type=float,
-    help='train_lr (default=1e-3)')
+parser.add_argument('-l', '--train_lr', default=1e-4, type=float,
+    help='train_lr (default=1e-4)')
 parser.add_argument('-p', '--pkl_file', default='filelist',  type=str,
     help='path to pickle file')
 parser.add_argument('-cf', '--cluster_folder', default=None, type=str,

@@ -4,7 +4,7 @@ import errno
 import subprocess
 from shutil import copytree
 
-source_dir = 'omniglot/images'
+source_dir = 'omniglot'
 target_dir = 'data/omniglot'
 
 if not os.path.exists(target_dir):

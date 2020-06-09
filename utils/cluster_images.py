@@ -6,13 +6,14 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
+parser.add_argument('data_path', metavar='DATA',
+    help='path to data (which is clustered)')
 parser.add_argument('-t', '--test', action='store_true', default=False,
     help='set to use existing kmeans model, otherwise do clustering')
-parser.add_argument('-d', '--data_path', default="", type=str, metavar='DATA', help='path to data (which is clustered)')
-parser.add_argument('-ds', '--data_source', default='CUB', type=str, metavar='DS',
+parser.add_argument('-ds', '--data_source', default='CUB', type=str,
     help='data_source (whose clustering model is used)')
-parser.add_argument('-n', '--num_clusters', default=4, type=int, metavar='CL',
-    help='Number of models (default=4)')
+parser.add_argument('-n', '--num_clusters', default=16, type=int,
+    help='Number of models (default=16)')
 
 args = parser.parse_args()
 

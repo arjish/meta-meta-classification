@@ -18,14 +18,14 @@ parser.add_argument('-t', '--test', action='store_true', default=False,
     help='set for test data, otherwise training data')
 parser.add_argument('--multi', action='store_true', default=False,
     help='set for multi-class problems, otherwise binary classification')
-parser.add_argument('-l', '--train_lr', default=1e-3, type=float,
-    help='train_lr (default=1e-3)')
+parser.add_argument('-l', '--train_lr', default=1e-4, type=float,
+    help='train_lr (default=1e-4)')
 parser.add_argument('-p', '--pkl_file', default='filelist', type=str,
     help='path to pickle file')
 parser.add_argument('-cf', '--cluster_folder', default=None, type=str,
     help='cluster folder w/o root (default=None)')
 parser.add_argument('-cl', '--num_clusters', default=16, type=int,
-    help='# of clusters (default=4)')
+    help='# of clusters (default=16)')
 parser.add_argument('-m', '--model_id', default="0", type=str,
     help='model ID (default="0")')
 

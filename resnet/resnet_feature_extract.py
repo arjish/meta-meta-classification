@@ -42,11 +42,9 @@ model_names = sorted(name for name in resnet.__dict__
                      and callable(resnet.__dict__[name]))
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Feature Extraction')
-parser.add_argument('-d', '--data', metavar='DIR', default='',
+parser.add_argument('data', metavar='DIR',
     help='path to dataset')
-parser.add_argument('-r', '--results_folder', metavar='RES_DIR', default='extracted_features',
-    help='path to the results')
-parser.add_argument('-f', '--imageFolderName', metavar='FOLDER', default='train')
+parser.add_argument('-f', '--image_folder', default='train')
 parser.add_argument('-a', '--arch', default='resnet152', choices=model_names,
     help='model architecture: ' + ' | '.join(model_names) +
          ' (default: resnet152)')
@@ -84,15 +82,14 @@ parser.add_argument('--multiprocessing-distributed', action='store_true',
 
 
 def createFolderStructure(args):
-    results_path = os.path.join(args.data, args.results_folder)
-    imageFolderName = args.imageFolderName
-    data_path = os.path.join(args.data, imageFolderName)
+    image_folder = args.image_folder
+    data_path = os.path.join(args.data, image_folder)
     classFolders_list = [label \
                          for label in os.listdir(data_path) \
                          if os.path.isdir(os.path.join(data_path, label))]
     for folder_name in classFolders_list:
-        if not os.path.exists(os.path.join(results_path, imageFolderName, folder_name)):
-            os.makedirs(os.path.join(results_path, imageFolderName, folder_name))
+        if not os.path.exists(os.path.join(args.data, 'features_'+image_folder, folder_name)):
+            os.makedirs(os.path.join(args.data, 'features_'+image_folder, folder_name))
 
 
 best_acc1 = 0
@@ -138,8 +135,7 @@ def main():
 def main_worker(gpu, ngpus_per_node, args):
     global best_acc1
     args.gpu = gpu
-    imageFolderName = args.imageFolderName
-    imagedir = os.path.join(args.data, imageFolderName)
+    imagedir = os.path.join(args.data, args.image_folder)
 
     if args.gpu is not None:
         print("Use GPU: {} for training".format(args.gpu))
@@ -234,7 +230,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
 
 def extract_features(args, data_loader, model):
-    imageFolderName = args.imageFolderName
+    image_folder = args.image_folder
     # switch to evaluate mode
     model.eval()
 
@@ -247,7 +243,7 @@ def extract_features(args, data_loader, model):
             for i in range(output.shape[0]):
                 root, image_name = os.path.split(image_path[i])
                 root, folder_name = os.path.split(root)
-                save_path = os.path.join(args.data, args.results_folder, imageFolderName, folder_name)
+                save_path = os.path.join(args.data, 'features_'+image_folder, folder_name)
                 np.save(os.path.join(save_path, image_name.split('.')[0]), output[i])
 
 

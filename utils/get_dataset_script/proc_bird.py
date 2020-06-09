@@ -59,5 +59,5 @@ for path in _ids:
             imwrite(path, img)
 
 # resize images
-cmd = ['python', 'get_dataset_script/resize_dataset.py', 'data/bird', 'CUB']
+cmd = ['python', 'get_dataset_script/resize_dataset.py', 'data/CUB', 'CUB']
 subprocess.call(cmd)

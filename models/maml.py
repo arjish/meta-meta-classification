@@ -3,7 +3,7 @@ import tensorflow as tf
 
 
 class MAML:
-    def __init__(self, data_source, kclass, kshot, kquery, train_lr=1e-4, meta_lr=1e-4, scope='MAML'):
+    def __init__(self, data_source, kclass, kshot, kquery, train_lr=1e-4, meta_lr=1e-3, scope='MAML'):
         """
 
         :param data_source:
