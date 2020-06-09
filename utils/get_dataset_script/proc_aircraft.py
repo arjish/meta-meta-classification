@@ -58,5 +58,5 @@ for i, line in enumerate(lines):
     print('{}/{} {}'.format(i, len(lines), ' '.join(cmd)))
 
 # resize images
-cmd = ['python', 'get_dataset_script/resize_dataset.py', 'data/aircraft', 'aircraft']
+cmd = ['python', 'utils/get_dataset_script/resize_dataset.py', 'data/aircraft', 'aircraft']
 subprocess.call(cmd)
