@@ -9,7 +9,7 @@ cmds.append(['unzip', 'images_evaluation.zip'])
 cmds.append(['mkdir', 'omniglot'])
 cmds.append(['mv', 'images_background/*', 'omniglot'])
 cmds.append(['mv', 'images_evaluation/*', 'omniglot'])
-cmds.append(['python', 'get_dataset_script/proc_omniglot.py'])
+cmds.append(['python', 'utils/get_dataset_script/proc_omniglot.py'])
 cmds.append(['rm', '-rf', 'images_background.zip', 'images_background', 'images_evaluation.zip', 'images_evaluation'])
 
 for cmd in cmds:
