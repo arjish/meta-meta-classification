@@ -48,8 +48,6 @@ Testing
 python ./data_generators/data_generator.py -t
 ```
 
-TODO: (with both training=True and training=False at line 291)
-
 Output: `filelistILSVRC` (for training) and `filelistILSVRC_test` (for testing)
 
 3. Get the query logits(preds) for the training problems as well as test problems for all the cluster models:
