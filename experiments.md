@@ -84,7 +84,8 @@ NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 1. Run MAML on individual clusters (assume num_clusters=4):
 
 ```
-python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 --kquery 15  --nway 5 --multi
+python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 \
+     --kquery 15  --nway 5 --multi
 ```
 
 (similarly run on all clusters)
@@ -110,7 +111,8 @@ Output: `filelistILSRV5way_test` (for testing)
 3. Get the query preds for the test problems for all the cluster models:
 
 ```
-python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 \
+     -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
 ```
 
 (similarly run on all clusters)
