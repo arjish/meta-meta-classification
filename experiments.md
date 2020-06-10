@@ -1,7 +1,10 @@
 # Download the data
 
 Execute the following script to download the data.
-```python ./utils/get_dataset_script/get_<dataset>.py```
+
+```
+python ./utils/get_dataset_script/get_<dataset>.py
+```
 
 `<dataset>` can be `ILSVRC`, `aircraft`, `bird` and `omniglot`.
 
