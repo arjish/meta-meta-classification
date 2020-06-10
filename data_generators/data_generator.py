@@ -1,9 +1,11 @@
+import argparse
 import numpy as np
-import os, sys
+import os
+import pickle
 import random
+import sys
 import tensorflow as tf
 import tqdm
-import pickle
 from copy import deepcopy
 
 
@@ -90,7 +92,7 @@ class DataGenerator:
                                       if os.path.isdir(os.path.join(metaval_folder_whole, label)) \
                                       ]
 
-        if data_source=='omniglot':
+        if data_source == 'omniglot':
             self.imgsz = (28, 28)
             self.dim_input = np.prod(self.imgsz) * 1  # 784
             self.rotations = [0, 90, 180, 270]
@@ -137,10 +139,10 @@ class DataGenerator:
                     class_folders = random.sample(folders, self.nway)
                     # Support images
                     all_filenames.extend(get_images(class_folders,
-                        nb_samples=self.kshot, shuffle=False, multi_path=True))
+                                                    nb_samples=self.kshot, shuffle=False, multi_path=True))
                     # Query images
                     all_filenames.extend(get_images(class_folders,
-                        nb_samples=self.kquery, shuffle=False, multi_path=True))
+                                                    nb_samples=self.kquery, shuffle=False, multi_path=True))
                 else:
                     # Get the target class folder (positive)
                     if self.cluster_flag:
@@ -159,25 +161,26 @@ class DataGenerator:
                     sampled_folders_negative = np.random.choice(folders_negative, self.nway - 1, replace=True)
                     # Sample 1 image from each of sampled_folders_negative with label 0
                     filenames = get_images(sampled_folders_negative,
-                        nb_samples=1, shuffle=False, multi_path=True)
+                                           nb_samples=1, shuffle=False, multi_path=True)
 
                     if self.cluster_flag:
                         filenames.append(target_image_cluster)
                     else:
                         # Extend by sampling self.nimg images from target_class_folder_whole with label 1
                         filenames.extend(get_images(target_class_folder_whole,
-                            nb_samples=self.kshot, shuffle=False, multi_path=False))
+                                                    nb_samples=self.kshot, shuffle=False, multi_path=False))
 
                     # Sample self.kquery negative folders (for test: kquery)
                     # Comment to use the same folders_negative
                     sampled_folders_negative = np.random.choice(folders_negative, self.kquery, replace=True)
                     # Sample 1 image from each of sampled_folders_negative with label 0
                     filenames.extend(get_images(sampled_folders_negative,
-                        nb_samples=self.kquery, shuffle=False, multi_path=True))
+                                                nb_samples=self.kquery, shuffle=False, multi_path=True))
 
                     # To make balanced positive examples:
                     filenames.extend(get_images(target_class_folder_whole,
-                        nb_samples=(self.nway - 1) * self.kquery, shuffle=False, multi_path=False))
+                                                nb_samples=(self.nway - 1) * self.kquery, shuffle=False,
+                                                multi_path=False))
 
                     # make sure the above isn't randomized order
                     all_filenames.extend(filenames)
@@ -271,25 +274,63 @@ class DataGenerator:
         return all_image_batches, all_label_batches
 
 
-def main():
-    kshot = 1
-    kquery = 1
-    nway = 51
-    pkl_file = 'filelistILSRV'
-    data_path = 'ILSRV'
-    data_source = 'imagenet'
+def main(sargs):
+    parser = argparse.ArgumentParser(description='Data Generator')
+    parser.add_argument('--kshot', default=1, type=int,
+                        help='# of shots per class (default=1)')
+    parser.add_argument('--kquery', default=1, type=int,
+                        help='# of queries per class (default=1)')
+    parser.add_argument('--nway', default=51, type=int,
+                        help='# of classes per problem (default=51)')
+    parser.add_argument('-p', '--pkl_file', default='filelistILSRV', type=str,
+                        help='path to pickle file')
+    parser.add_argument('--train_problems', default=40000, type=int,
+                        help='# of training problems (default=40,000)')
+    parser.add_argument('--test_problems', default=10000, type=int,
+                        help='# of test problems (default=10,000)')
+    parser.add_argument('--multi', action='store_true', default=False,
+                        help='set for multi-class problems, otherwise binary classification')
+    parser.add_argument('-t', '--test', action='store_true', default=False,
+                        help='set for test data, otherwise training data')
+    parser.add_argument('--metabatch', default=1, type=int,
+                        help='meta batch-size for training (default=1)')
+    parser.add_argument('-ds', '--data_source', default='imagenet', type=str,
+                        help='data_source (imagenet or omniglot)')
+    parser.add_argument('data_path', metavar='DATA',
+                        help='path to data')
+
+    args = parser.parse_args(sargs)
+
+    # kshot = 1
+    # kquery = 1
+    # nway = 51
+    # pkl_file = 'filelistILSRV'
+    # data_path = 'ILSRV'
+    # data_source = 'imagenet'
+    # cluster_folder = None
+    # meta_batchsz = 1
+    # multiclass = False
+    # train_problems = 40000
+    # test_problems = 10000
+
+    kshot = args.kshot
+    kquery = args.kquery
+    nway = args.nway
+    pkl_file = args.pkl_file
+    data_path = args.data_path
+    data_source = args.data_source
     cluster_folder = None
-    meta_batchsz = 1
-    multiclass = False
-    train_problems = 40000
-    test_problems = 10000
+    meta_batchsz = args.metabatch
+    multiclass = args.multi
+    train_problems = args.train_problems
+    test_problems = args.test_problems
 
     db = DataGenerator(data_source, nway, kshot, kquery, meta_batchsz,
-        pkl_file, data_path, cluster_folder, multiclass,
-        train_problems, test_problems)
+                       pkl_file, data_path, cluster_folder, multiclass,
+                       train_problems, test_problems)
 
     image_tensor, label_tensor = db.make_data_tensor(training=True)
 
 
-if __name__=="__main__":
-    main()
+if __name__ == "__main__":
+    main(sys.argv[1:])
