@@ -151,7 +151,8 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test
 4. Test meta-classifier using the query logits(preds) obtained above for the training problems:
 
 ```
-python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test -n 4 --kquery 15 --nway 5 --multi -t
+python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
+      -n 4 --kquery 15 --nway 5 --multi -t ILSVRC
 ```
 
 Output: Final accuracy, CI95
