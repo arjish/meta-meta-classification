@@ -72,15 +72,15 @@ python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSRV_test -cf cl
 
 This generates `npy` files storing the query logits(preds) and query accuracy for all these problems.
 
-4. Train meta-classifier using the query preds obtained above for the training problems:
+4. Train meta-aggregator using the query preds obtained above for the training problems:
 
 ```
 python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4
 ```
 
-Output: meta-classifier model `ckptILSVRC_moe`
+Output: meta-aggregator model `ckptILSVRC_moe`
 
-5. Test meta-classifier using the query preds obtained above for the training problems:
+5. Test meta-aggregator using the query preds obtained above for the training problems:
 
 ```
 python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSRV  -n 4   -t
