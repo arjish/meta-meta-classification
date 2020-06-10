@@ -41,9 +41,9 @@ python ./data_generators/data_generator.py
 ```
 (with both training=True and training=False at line 291)
 
-3. This generates `filelistILSRV` (for training), `filelistILSRV_test` (for testing)
+Output: `filelistILSRV` (for training) and `filelistILSRV_test` (for testing)
 
-* Get the query preds for the training problems as well as test problems for all the cluster models:
+3. Get the query preds for the training problems as well as test problems for all the cluster models:
 
 **Training problems:**
 ```
@@ -65,7 +65,7 @@ This generates `npy` files storing the query preds and query accuracy for all th
 python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4
 ```
 
-Output: meta-classifier model ckptILSVRC_moe
+Output: meta-classifier model `ckptILSVRC_moe`
 
 5. Test meta-classifier using the query preds obtained above for the training problems:
 
@@ -81,13 +81,13 @@ NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 
 # Run MMC for 5-way one-shot
 
-Run MAML on individual clusters (assume num_clusters=4):
+1. Run MAML on individual clusters (assume num_clusters=4):
 
 ```python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 --kquery 15  --nway 5 --multi
 ```
 (similarly run on all clusters)
 
-Create training and testing problems for meta-aggregation:
+2. Create training and testing problems for meta-aggregation:
 
 ```python data_generators/data_generator.py
 ```
@@ -102,7 +102,7 @@ test_problems = 600
 
 Output: `filelistILSRV5way_test` (for testing)
 
-Get the query preds for the test problems for all the cluster models:
+3. Get the query preds for the test problems for all the cluster models:
 
 ```
 python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
@@ -110,7 +110,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test 
 
 (similarly run on all clusters)
 
-Test meta-classifier using the query preds obtained above for the training problems:
+4. Test meta-classifier using the query preds obtained above for the training problems:
 
 ```
 python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4 --kquery 15 --nway 5 --multi -t
