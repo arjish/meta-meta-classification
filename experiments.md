@@ -115,9 +115,9 @@ python main.py  data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_4_3 -cf c
 2. Create training and testing problems for meta-aggregation:
 
 ```
-python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSRV5way --multi --test_problems 600
+python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSVRC5way --multi --test_problems 600
 ```
-(with only training=False at line 291)
+TODO: (with only training=False at line 291)
 
 TODO
 Change the following:
@@ -129,9 +129,9 @@ multiclass=True
 test_problems = 600
 ```
 
-Output: `filelistILSRV5way_test` (for testing)
+Output: `filelistILSVRC5way_test` (for testing)
 
-3. Get the query preds for the test problems for all the cluster models:
+3. Get the query logits(preds) for the test problems for all the cluster models:
 
 ```
 python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 \
@@ -148,7 +148,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSRV5way_test 
 ```
 
 
-4. Test meta-classifier using the query preds obtained above for the training problems:
+4. Test meta-classifier using the query logits(preds) obtained above for the training problems:
 
 ```
 python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4 --kquery 15 --nway 5 --multi -t
