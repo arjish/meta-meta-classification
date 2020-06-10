@@ -83,7 +83,7 @@ Output: meta-aggregator model `ckptILSVRC_moe`
 5. Test meta-aggregator using the query preds obtained above for the training problems:
 
 ```
-python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSRV  -n 4   -t
+python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSRV_test  -n 4   -t
 ```
 
 Output: final accuracy, CI95
@@ -151,7 +151,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test
 4. Test meta-classifier using the query logits(preds) obtained above for the training problems:
 
 ```
-python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC -n 4 --kquery 15 --nway 5 --multi -t
+python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test -n 4 --kquery 15 --nway 5 --multi -t
 ```
 
 Output: Final accuracy, CI95
