@@ -35,16 +35,20 @@ python main.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSVRC_4_2 -cf cluster_4_
 python main.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC_4_3 -cf cluster_4_3
 ```
 
-(similarly run on all clusters)
-
 Output: This creates 4 saved models for 4 clusters.
 
 2. Create training and testing problems for meta-aggregation:
 
+Training
 ```
 python ./data_generators/data_generator.py
 ```
-(with both training=True and training=False at line 291)
+Testing
+```
+python ./data_generators/data_generator.py -t
+```
+
+TODO: (with both training=True and training=False at line 291)
 
 Output: `filelistILSRV` (for training) and `filelistILSRV_test` (for testing)
 
