@@ -115,10 +115,11 @@ python main.py  data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_4_3 -cf c
 2. Create training and testing problems for meta-aggregation:
 
 ```
-python data_generators/data_generator.py
+python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSRV5way --multi --test_problems 600
 ```
 (with only training=False at line 291)
 
+# TODO
 Change the following:
 ```
 kquery = 15
