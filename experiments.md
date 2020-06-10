@@ -115,18 +115,7 @@ python main.py  data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_4_3 -cf c
 2. Create training and testing problems for meta-aggregation:
 
 ```
-python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSVRC5way --multi --test_problems 600
-```
-TODO: (with only training=False at line 291)
-
-TODO
-Change the following:
-```
-kquery = 15
-nway = 5
-pkl_file = 'filelistILSVRC5way'
-multiclass=True
-test_problems = 600
+python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSVRC5way --multi --test_problems 600 ILSVRC
 ```
 
 Output: `filelistILSVRC5way_test` (for testing)
@@ -152,7 +141,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test
 
 ```
 python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
-      -n 4 --kquery 15 --nway 5 --multi -t ILSVRC
+      -n 4 --kquery 15 --nway 5 --multi -t 
 ```
 
 Output: Final accuracy, CI95
