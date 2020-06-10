@@ -50,24 +50,24 @@ python ./data_generators/data_generator.py -t
 
 TODO: (with both training=True and training=False at line 291)
 
-Output: `filelistILSRV` (for training) and `filelistILSRV_test` (for testing)
+Output: `filelistILSVRC` (for training) and `filelistILSVRC_test` (for testing)
 
 3. Get the query logits(preds) for the training problems as well as test problems for all the cluster models:
 
 **Training problems:**
 ```
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSRV -cf cluster_4_0 -cl 4 -m 0
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSRV -cf cluster_4_1 -cl 4 -m 1
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSRV -cf cluster_4_2 -cl 4 -m 2
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSRV -cf cluster_4_3 -cl 4 -m 3
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSVRC -cf cluster_4_0 -cl 4 -m 0
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSVRC -cf cluster_4_1 -cl 4 -m 1
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSVRC -cf cluster_4_2 -cl 4 -m 2
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC -cf cluster_4_3 -cl 4 -m 3
 ```
 
 **Test problems:**
 ```
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSRV_test -cf cluster_4_0 -cl 4 -m 0 -t
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSRV_test -cf cluster_4_1 -cl 4 -m 1 -t
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSRV_test -cf cluster_4_2 -cl 4 -m 2 -t
-python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSRV_test -cf cluster_4_3 -cl 4 -m 3 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSVRC_test -cf cluster_4_0 -cl 4 -m 0 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSVRC_test -cf cluster_4_1 -cl 4 -m 1 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSVRC_test -cf cluster_4_2 -cl 4 -m 2 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC_test -cf cluster_4_3 -cl 4 -m 3 -t
 ```
 
 This generates `npy` files storing the query logits(preds) and query accuracy for all these problems.
@@ -75,7 +75,7 @@ This generates `npy` files storing the query logits(preds) and query accuracy fo
 4. Train meta-aggregator using the query preds obtained above for the training problems:
 
 ```
-python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4
+python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC -n 4
 ```
 
 Output: meta-aggregator model `ckptILSVRC_moe`
@@ -83,7 +83,7 @@ Output: meta-aggregator model `ckptILSVRC_moe`
 5. Test meta-aggregator using the query preds obtained above for the training problems:
 
 ```
-python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSRV_test  -n 4   -t
+python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSVRC_test  -n 4   -t
 ```
 
 Output: final accuracy, CI95
@@ -124,7 +124,7 @@ Change the following:
 ```
 kquery = 15
 nway = 5
-pkl_file = 'filelistILSRV5way'
+pkl_file = 'filelistILSVRC5way'
 multiclass=True
 test_problems = 600
 ```
