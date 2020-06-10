@@ -77,3 +77,40 @@ NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 
 
 # Run MMC for 5-way one-shot
+
+Run MAML on individual clusters (assume num_clusters=4):
+
+```python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 --kquery 15  --nway 5 --multi
+```
+(similarly run on all clusters)
+
+Create training and testing problems for meta-aggregation:
+
+```python data_generators/data_generator.py
+```
+(with only training=False at line 291)
+
+Change the following:
+kquery = 15
+nway = 5
+pkl_file = 'filelistILSRV5way'
+multiclass=True
+test_problems = 600
+
+Output: `filelistILSRV5way_test` (for testing)
+
+Get the query preds for the test problems for all the cluster models:
+
+```
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
+```
+
+(similarly run on all clusters)
+
+Test meta-classifier using the query preds obtained above for the training problems:
+
+```
+python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4 --kquery 15 --nway 5 --multi -t
+```
+
+Output: Final accuracy, CI95
