@@ -52,21 +52,25 @@ TODO: (with both training=True and training=False at line 291)
 
 Output: `filelistILSRV` (for training) and `filelistILSRV_test` (for testing)
 
-3. Get the query preds for the training problems as well as test problems for all the cluster models:
+3. Get the query logits(preds) for the training problems as well as test problems for all the cluster models:
 
 **Training problems:**
 ```
 python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSRV -cf cluster_4_0 -cl 4 -m 0
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSRV -cf cluster_4_1 -cl 4 -m 1
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSRV -cf cluster_4_2 -cl 4 -m 2
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSRV -cf cluster_4_3 -cl 4 -m 3
 ```
 
 **Test problems:**
 ```
 python ./main_query.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSRV_test -cf cluster_4_0 -cl 4 -m 0 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_1/ -p filelistILSRV_test -cf cluster_4_1 -cl 4 -m 1 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSRV_test -cf cluster_4_2 -cl 4 -m 2 -t
+python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSRV_test -cf cluster_4_3 -cl 4 -m 3 -t
 ```
 
-(similarly run on all clusters)
-
-This generates `npy` files storing the query preds and query accuracy for all these problems.
+This generates `npy` files storing the query logits(preds) and query accuracy for all these problems.
 
 4. Train meta-classifier using the query preds obtained above for the training problems:
 
