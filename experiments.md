@@ -134,16 +134,16 @@ Output: `filelistILSVRC5way_test` (for testing)
 3. Get the query logits(preds) for the test problems for all the cluster models:
 
 ```
-python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 \
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_test -cf cluster_4_0 \
      -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
      
-python main_query.py data/ILSVRC/ ckptILSVRC5way_4_1/ -p filelistILSRV5way_test -cf cluster_4_1 \
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_1/ -p filelistILSVRC5way_test -cf cluster_4_1 \
      -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
 
-python main_query.py data/ILSVRC/ ckptILSVRC5way_4_2/ -p filelistILSRV5way_test -cf cluster_4_2 \
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_2/ -p filelistILSVRC5way_test -cf cluster_4_2 \
      -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t     
 
-python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSRV5way_test -cf cluster_4_3 \
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test -cf cluster_4_3 \
      -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
 ```
 
@@ -151,7 +151,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSRV5way_test 
 4. Test meta-classifier using the query logits(preds) obtained above for the training problems:
 
 ```
-python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSRV -n 4 --kquery 15 --nway 5 --multi -t
+python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC -n 4 --kquery 15 --nway 5 --multi -t
 ```
 
 Output: Final accuracy, CI95
