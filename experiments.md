@@ -8,6 +8,8 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 `<dataset>` can be `ILSVRC`, `aircraft`, `bird` and `omniglot`.
 
+TODO: Add section for imagenet
+
 # Clustering 
 
 Cluster on training data:
