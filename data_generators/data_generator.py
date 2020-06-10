@@ -324,12 +324,13 @@ def main(sargs):
     multiclass = args.multi
     train_problems = args.train_problems
     test_problems = args.test_problems
+    training = not args.test
 
     db = DataGenerator(data_source, nway, kshot, kquery, meta_batchsz,
                        pkl_file, data_path, cluster_folder, multiclass,
                        train_problems, test_problems)
 
-    image_tensor, label_tensor = db.make_data_tensor(training=True)
+    image_tensor, label_tensor = db.make_data_tensor(training=training)
 
 
 if __name__ == "__main__":
