@@ -34,7 +34,7 @@ python main.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSVRC_4_0 -cf cluster_4_
 
 (similarly run on all clusters)
 
-This creates 4 saved models for 4 clusters.
+Output: This creates 4 saved models for 4 clusters.
 
 2. Create training and testing problems for meta-aggregation:
 
