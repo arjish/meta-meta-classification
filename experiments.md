@@ -83,22 +83,27 @@ NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 
 1. Run MAML on individual clusters (assume num_clusters=4):
 
-```python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 --kquery 15  --nway 5 --multi
 ```
+python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 --kquery 15  --nway 5 --multi
+```
+
 (similarly run on all clusters)
 
 2. Create training and testing problems for meta-aggregation:
 
-```python data_generators/data_generator.py
+```
+python data_generators/data_generator.py
 ```
 (with only training=False at line 291)
 
 Change the following:
+```
 kquery = 15
 nway = 5
 pkl_file = 'filelistILSRV5way'
 multiclass=True
 test_problems = 600
+```
 
 Output: `filelistILSRV5way_test` (for testing)
 
