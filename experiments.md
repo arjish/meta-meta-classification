@@ -99,9 +99,18 @@ NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 ```
 python main.py  data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_4_0 -cf cluster_4_0 \
      --kquery 15  --nway 5 --multi
+
+python main.py  data/ILSVRC/ ckptILSVRC5way_4_1/ -p filelistILSVRC5way_4_1 -cf cluster_4_1 \
+     --kquery 15  --nway 5 --multi
+
+python main.py  data/ILSVRC/ ckptILSVRC5way_4_2/ -p filelistILSVRC5way_4_2 -cf cluster_4_2 \
+     --kquery 15  --nway 5 --multi
+
+python main.py  data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_4_3 -cf cluster_4_3 \
+     --kquery 15  --nway 5 --multi
+
 ```
 
-(similarly run on all clusters)
 
 2. Create training and testing problems for meta-aggregation:
 
@@ -126,9 +135,17 @@ Output: `filelistILSRV5way_test` (for testing)
 ```
 python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSRV5way_test -cf cluster_4_0 \
      -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
+     
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_1/ -p filelistILSRV5way_test -cf cluster_4_1 \
+     -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
+
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_2/ -p filelistILSRV5way_test -cf cluster_4_2 \
+     -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t     
+
+python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSRV5way_test -cf cluster_4_3 \
+     -cl 4 -m 0 --kquery 15 --nway 5 --multi --test_problems 600 -t
 ```
 
-(similarly run on all clusters)
 
 4. Test meta-classifier using the query preds obtained above for the training problems:
 
