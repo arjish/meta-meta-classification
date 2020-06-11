@@ -8,7 +8,7 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 `<dataset>` can be `ILSVRC`, `aircraft`, `bird` and `omniglot`.
 
-**Note:** Register at **ImageNet**(http://www.image-net.org/) and request for a username and an access key to download ILSRVC-2012 data set.
+**Note:** Register at [**ImageNet**](http://www.image-net.org/) and request for a username and an access key to download ILSRVC-2012 data set.
 
 # ResNet Pretraining
 
@@ -164,7 +164,7 @@ python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
 
 Output: Final accuracy, CI95
 
-# Selected arguments
+### Selected arguments
     - data\_path: path to the folder containing train and test images: data/<dataset>
     - ckpt\_name: specify the path to a checkpoint to save the model and if exists, load all the parameters
     - model
