@@ -33,7 +33,7 @@ python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pt
 python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pth.tar -f test
 ```
 
-Output: Numpy files containing features of train images in `data/<dataset>/features_train` and test images in `data/<dataset>/features_test`.
+Output: `.npy` files containing features of train images in `data/<dataset>/features_train` and test images in `data/<dataset>/features_test`.
 
 ## Clustering 
 
@@ -93,7 +93,7 @@ python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSVRC_test -cf c
 python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC_test -cf cluster_4_3 -cl 4 -m 3 -t
 ```
 
-This generates `Numpy` files storing the query logits(preds) and query accuracy for all these problems.
+This generates `.npy` files storing the query logits (preds) and query accuracy for all these problems.
 
 4. Train meta-aggregator using the query preds obtained from (3) for the training problems:
 
@@ -161,7 +161,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test
 ```
 
 
-4. Test meta-aggregator using the query logits(preds) obtained from (3) for the test problems:
+4. Test meta-aggregator using the query logits (preds) obtained from (3) for the test problems:
 
 ```
 python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
