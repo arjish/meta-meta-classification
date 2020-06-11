@@ -10,6 +10,27 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 TODO: Add section for imagenet
 
+# Resnet Pretraining
+
+1. Train on Resnet training classes:
+Input: data/ILSVRC  (should contain train and val)
+
+```
+python resnet/resnet_train_imagenet.py data/ILSVRC 
+```
+
+2. Extract features: train, test
+
+```
+python resnet_feature_extract.py  data/ILSVRC --resume model_best_imagenet.pth.tar -f train
+```
+```
+python resnet_feature_extract.py  data/ILSVRC --resume model_best_imagenet.pth.tar -f test
+```
+
+Output: Numpy files containing features of train images in data/ILSVRC/features_train and test images in data/ILSVRC/features_test.
+
+
 # Clustering 
 
 Cluster on training data:
