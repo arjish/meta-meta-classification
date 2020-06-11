@@ -37,13 +37,13 @@ Output: Numpy files containing features of train images in `data/<dataset>/featu
 
 ## Clustering 
 
-Cluster on training data:
+Cluster the training data using k-means:
 
 ```
 python ./utils/cluster_images.py data/<dataset> -ds <dataset> -n num_clusters
 ```
 
-Cluster on test data using the same model:
+Predict the nearest cluster for the test data using the learnt k-means:
 
 ```
 python ./utils/cluster_images.py data/<dataset> -ds <dataset> -n num_clusters -t
@@ -75,7 +75,7 @@ python ./data_generators/data_generator.py -t
 
 Output: `filelistILSVRC` (for training) and `filelistILSVRC_test` (for testing)
 
-3. Get the query logits (preds) for the training problems as well as test problems for all the cluster models:
+3. Get the query logits (preds) for the training problems as well as test problems for the 4 individual learners:
 
 **Training problems:**
 ```
@@ -93,7 +93,7 @@ python ./main_query.py data/ILSVRC/ ckptILSVRC_4_2/ -p filelistILSVRC_test -cf c
 python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC_test -cf cluster_4_3 -cl 4 -m 3 -t
 ```
 
-This generates `npy` files storing the query logits(preds) and query accuracy for all these problems.
+This generates `Numpy` files storing the query logits(preds) and query accuracy for all these problems.
 
 4. Train meta-aggregator using the query preds obtained from (3) for the training problems:
 
@@ -135,7 +135,7 @@ python main.py  data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_4_3 -cf c
 ```
 
 
-2. Create training and testing problems for meta-aggregation:
+2. Create test problems for meta-aggregation:
 
 ```
 python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSVRC5way \
@@ -144,7 +144,7 @@ python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSV
 
 Output: `filelistILSVRC5way_test` (for testing)
 
-3. Get the query logits (preds) for the test problems for all the cluster models:
+3. Get the query logits (preds) for the test problems for the 4 individual learners:
 
 ```
 python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_test -cf cluster_4_0 \
