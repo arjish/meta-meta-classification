@@ -164,7 +164,7 @@ python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
 
 Output: Final accuracy, CI95
 
-### Selected arguments
+## Selected arguments
     - data\_path: path to the folder containing train and test images: data/<dataset>
     - ckpt\_name: specify the path to a checkpoint to save the model and if exists, load all the parameters
     - model
