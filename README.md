@@ -1,4 +1,4 @@
-# Meta-Meta Classification for One-shot Learning
+# Meta-Meta Classification for One-Shot Learning
 
 ## Download the data
 
