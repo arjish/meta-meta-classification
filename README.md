@@ -45,7 +45,7 @@ Cluster on test data using the same model:
 python ./utils/cluster_images.py data/<dataset> -ds <dataset> -n num_clusters -t
 ```
 
-## Run MMC
+## Run MMC for One-vs-All one-shot
 
 1. Run MAML on individual clusters (assume num_clusters=4):
 
