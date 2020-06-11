@@ -13,7 +13,6 @@ TODO: Add section for imagenet
 # Resnet Pretraining
 
 1. Train on Resnet training classes:
-Input: data/ILSVRC  (should contain train and val)
 
 ```
 python resnet/resnet_train_imagenet.py data/ILSVRC 
