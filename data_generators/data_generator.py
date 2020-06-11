@@ -282,7 +282,7 @@ def main(sargs):
                         help='# of queries per class (default=1)')
     parser.add_argument('--nway', default=51, type=int,
                         help='# of classes per problem (default=51)')
-    parser.add_argument('-p', '--pkl_file', default='filelistILSRV', type=str,
+    parser.add_argument('-p', '--pkl_file', default='filelistILSVRC', type=str,
                         help='path to pickle file')
     parser.add_argument('--train_problems', default=40000, type=int,
                         help='# of training problems (default=40,000)')
@@ -301,17 +301,6 @@ def main(sargs):
 
     args = parser.parse_args(sargs)
 
-    # kshot = 1
-    # kquery = 1
-    # nway = 51
-    # pkl_file = 'filelistILSRV'
-    # data_path = 'ILSRV'
-    # data_source = 'imagenet'
-    # cluster_folder = None
-    # meta_batchsz = 1
-    # multiclass = False
-    # train_problems = 40000
-    # test_problems = 10000
 
     kshot = args.kshot
     kquery = args.kquery
