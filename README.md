@@ -75,7 +75,7 @@ python ./data_generators/data_generator.py -t
 
 Output: `filelistILSVRC` (for training) and `filelistILSVRC_test` (for testing)
 
-3. Get the query logits(preds) for the training problems as well as test problems for all the cluster models:
+3. Get the query logits (preds) for the training problems as well as test problems for all the cluster models:
 
 **Training problems:**
 ```
@@ -95,7 +95,7 @@ python ./main_query.py data/ILSVRC/ ckptILSVRC_4_3/ -p filelistILSVRC_test -cf c
 
 This generates `npy` files storing the query logits(preds) and query accuracy for all these problems.
 
-4. Train meta-aggregator using the query preds obtained above for the training problems:
+4. Train meta-aggregator using the query preds obtained from (3) for the training problems:
 
 ```
 python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC -n 4
@@ -103,7 +103,7 @@ python ./main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC -n 4
 
 Output: meta-aggregator model `ckptILSVRC_moe`
 
-5. Test meta-aggregator using the query preds obtained above for the training problems:
+5. Test meta-aggregator using the query preds obtained from (3) for the test problems:
 
 ```
 python ./main_MC.py  data/ILSVRC/  ckptILSVRC_moe/ -p filelistILSVRC_test  -n 4   -t
@@ -144,7 +144,7 @@ python data_generators/data_generator.py -t --kquery 15 --nway 5 -p filelistILSV
 
 Output: `filelistILSVRC5way_test` (for testing)
 
-3. Get the query logits(preds) for the test problems for all the cluster models:
+3. Get the query logits (preds) for the test problems for all the cluster models:
 
 ```
 python main_query.py data/ILSVRC/ ckptILSVRC5way_4_0/ -p filelistILSVRC5way_test -cf cluster_4_0 \
@@ -161,7 +161,7 @@ python main_query.py data/ILSVRC/ ckptILSVRC5way_4_3/ -p filelistILSVRC5way_test
 ```
 
 
-4. Test meta-classifier using the query logits(preds) obtained above for the training problems:
+4. Test meta-aggregator using the query logits(preds) obtained from (3) for the test problems:
 
 ```
 python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
