@@ -171,24 +171,25 @@ python main_MC.py data/ILSVRC/ ckptILSVRC_moe/ -p filelistILSVRC5way_test \
 Output: Final accuracy, CI95
 
 ## Selected arguments
-    - data\_path: path to the folder containing train and test images: data/<dataset>
-    - ckpt\_name: specify the path to a checkpoint to save the model and if exists, load all the parameters
-    - model
-        - --data\_source: type of images used (omniglot or others)
-        - --test: flag indicating meta-testing or working on test images
-        - --multi: flag indicating multi-class problems
-        - --cuda\_id: GPU to be used
-    - Hyperparameters
-        - --train_lr: learning rate for the adapted models (inner loop): 10^4 for clusters, 10^3 on whole data
-        - --meta\_lr: learning rate for the global update of MAML (outer loop): 10^3
-        - --pkl\_file: name of the pickle file containing the list of image files in all sampled problems
-        - --cluster\_folder: folder containing a particular cluster: cluster_<num\_clusters>_<cluster\_id>
-        - --kshot: number of images from each class in support set
-        - --kquery: number of images from each class in query set
-        - --nway: number of classes per task
-        - --metabatch: number of tasks per batch: 4
-        - --steps: number of gradient update steps in the inner loop: 5
-        - --iter: number of training iterations: 40,000
-        - --train\_problems: number of tasks used for training: 100,000
-        - --test\_probolems: number of tasks used for testing: 10,000
+
+- data\_path: path to the folder containing train and test images: data/<dataset>
+- ckpt\_name: specify the path to a checkpoint to save the model and if exists, load all the parameters
+- model
+   - --data\_source: type of images used (omniglot or others)
+   - --test: flag indicating meta-testing or working on test images
+   - --multi: flag indicating multi-class problems
+   - --cuda\_id: GPU to be used
+- Hyperparameters
+   - --train_lr: learning rate for the adapted models (inner loop): 10^4 for clusters, 10^3 on whole data
+   - --meta\_lr: learning rate for the global update of MAML (outer loop): 10^3
+   - --pkl\_file: name of the pickle file containing the list of image files in all sampled problems
+   - --cluster\_folder: folder containing a particular cluster: cluster_<num\_clusters>_<cluster\_id>
+   - --kshot: number of images from each class in support set
+   - --kquery: number of images from each class in query set
+   - --nway: number of classes per task
+   - --metabatch: number of tasks per batch: 4
+   - --steps: number of gradient update steps in the inner loop: 5
+   - --iter: number of training iterations: 40,000
+   - --train\_problems: number of tasks used for training: 100,000
+   - --test\_probolems: number of tasks used for testing: 10,000
 
