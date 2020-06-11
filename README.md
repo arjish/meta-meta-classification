@@ -51,7 +51,7 @@ python ./utils/cluster_images.py data/<dataset> -ds <dataset> -n num_clusters -t
 
 ## Run MMC for One-vs-All one-shot
 
-1. Run MAML on individual clusters (assume num_clusters=4):
+1. Run MAML on individual clusters (assume dataset=ILSVRC, num_clusters=4):
 
 ```
 python main.py data/ILSVRC/ ckptILSVRC_4_0/ -p filelistILSVRC_4_0 -cf cluster_4_0
