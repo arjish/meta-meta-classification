@@ -18,16 +18,18 @@ TODO: Add section for imagenet
 python resnet/resnet_train_imagenet.py data/ILSVRC 
 ```
 
-2. Extract features: train, test
+2. Extract features for all datasets: train, test
 
 ```
-python resnet_feature_extract.py  data/ILSVRC --resume model_best_imagenet.pth.tar -f train
+python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pth.tar -f train
 ```
 ```
-python resnet_feature_extract.py  data/ILSVRC --resume model_best_imagenet.pth.tar -f test
+python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pth.tar -f test
 ```
 
-Output: Numpy files containing features of train images in data/ILSVRC/features_train and test images in data/ILSVRC/features_test.
+Output: Numpy files containing features of train images in data/<dataset>/features_train and test images in data/<dataset>/features_test.
+
+3. Extract 
 
 
 # Clustering 
