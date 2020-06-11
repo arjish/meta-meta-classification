@@ -43,5 +43,5 @@ cmd = ['mv'] + [os.path.join(source_val_dir, c) for c in classes['train']] + [ta
 
 
 # resize images
-# cmd = ['python', 'utils/get_dataset_script/resize_dataset.py', 'data/ILSVRC', 'ILSVRC']
-# subprocess.call(cmd)
+cmd = ['python', 'utils/get_dataset_script/resize_dataset.py', 'data/ILSVRC', 'ILSVRC']
+subprocess.call(cmd)
