@@ -10,7 +10,11 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 `<dataset>` can be `ILSVRC`, `aircraft`, `bird` and `omniglot`.
 
-**Note:** Register at [**ImageNet**](http://www.image-net.org/) and request for a username and an access key to download ILSRVC-2012 data set.
+**Note:** Register at [**ImageNet**](http://www.image-net.org/) and request for a username and an access key to download ILSRVC-2012 data set. Pass them as arguments to above command. 
+
+```
+python ./utils/get_dataset_script/get_ILSVRC.py accesskey username
+```
 
 ## ResNet Pretraining
 
