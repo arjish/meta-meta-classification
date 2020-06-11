@@ -25,7 +25,7 @@ python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pt
 python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pth.tar -f test
 ```
 
-Output: Numpy files containing features of train images in data/<dataset>/features_train and test images in data/ <dataset> /features_test.
+Output: Numpy files containing features of train images in `data/<dataset>/features_train` and test images in `data/<dataset>/features_test`.
 
 # Clustering 
 
