@@ -1,4 +1,6 @@
-# Download the data
+# Meta-Meta Classification for One-shot Learning
+
+## Download the data
 
 Execute the following script to download the data.
 
@@ -10,7 +12,7 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 **Note:** Register at [**ImageNet**](http://www.image-net.org/) and request for a username and an access key to download ILSRVC-2012 data set.
 
-# ResNet Pretraining
+## ResNet Pretraining
 
 1. Train ResNet-152 on ILSVRC training classes:
 
@@ -29,7 +31,7 @@ python resnet_feature_extract.py  data/<dataset> --resume model_best_imagenet.pt
 
 Output: Numpy files containing features of train images in `data/<dataset>/features_train` and test images in `data/<dataset>/features_test`.
 
-# Clustering 
+## Clustering 
 
 Cluster on training data:
 
@@ -43,7 +45,7 @@ Cluster on test data using the same model:
 python ./utils/cluster_images.py data/<dataset> -ds <dataset> -n num_clusters -t
 ```
 
-# Run MMC
+## Run MMC
 
 1. Run MAML on individual clusters (assume num_clusters=4):
 
@@ -109,7 +111,7 @@ Output: final accuracy, CI95
 NOTE: use `-ds omniglot` in step 1, 3 for `omniglot` data-set.
 
 
-# Run MMC for 5-way one-shot
+## Run MMC for 5-way one-shot
 
 1. Run MAML on individual clusters (assume num_clusters=4):
 
