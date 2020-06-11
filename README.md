@@ -8,8 +8,6 @@ python ./utils/get_dataset_script/get_<dataset>.py
 
 `<dataset>` can be `ILSVRC`, `aircraft`, `bird` and `omniglot`.
 
-TODO: Add section for imagenet
-
 # Resnet Pretraining
 
 1. Train on Resnet training classes:
