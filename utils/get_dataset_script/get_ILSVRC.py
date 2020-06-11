@@ -10,6 +10,7 @@ cmds.append(['mv', 'imagenet_2012_validation_synset_labels.txt', 'synsets.txt'])
 cmds.append(['nohup', 'bash', 'download_imagenet.sh', '.', 'synsets.txt', '>& download.log &'])
 cmds.append(['wget', 'https://github.com/juliensimon/aws/blob/master/mxnet/imagenet/build_validation_tree.sh'])
 cmds.append(['bash', 'build_validation_tree.sh'])
+cmds.append(['python', 'utils/get_dataset_script/proc_ILSVRC.py'])
 
 for cmd in cmds:
     print(' '.join(cmd))
