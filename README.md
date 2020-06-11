@@ -183,7 +183,7 @@ Output: Final accuracy, CI95
    - --train_lr: learning rate for the adapted models (inner loop): `0.0001` for clusters, `0.001` on whole data
    - --meta\_lr: learning rate for the global update of MAML (outer loop): `0.001`
    - --pkl\_file: name of the pickle file containing the list of image files in all sampled problems
-   - --cluster\_folder: folder containing a particular cluster: `cluster_<num_clusters>_<cluster_id>`, `None` for whole data
+   - --cluster\_folder: folder containing a particular cluster: `cluster_<num_clusters>_<cluster_id>` for clusters, `None` for whole data
    - --kshot: number of images from each class in support set
    - --kquery: number of images from each class in query set
    - --nway: number of classes per task
