@@ -1,4 +1,4 @@
-# Meta-Meta Classification for One-Shot Learning: [*paper*](https://arxiv.org/pdf/2004.08083.pdf)
+# Meta-Meta Classification for One-Shot Learning: [paper](https://arxiv.org/pdf/2004.08083.pdf)
 
 ## Download the data
 
